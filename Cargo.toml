@@ -1,5 +1,7 @@
 [package]
 name = "chroma"
+description = "A library of fundamental style types for terminal colors designed for configuration files and user input."
+license = "MIT"
 author = "Emma Alexandria"
 version = "0.0.1"
 edition = "2021"
