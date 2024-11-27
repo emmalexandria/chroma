@@ -37,12 +37,8 @@ impl Into<u8> for Ansi16 {
 impl TryFrom<u8> for Ansi16 {
     type Error = Ansi16Error;
     fn try_from(value: u8) -> Result<Ansi16, Self::Error> {
-        if value > 16 {
-            return Err(Ansi16Error::U8TooLarge);
-        } else {
-            match value {
-                0 => Ansi16::Default,
-            }
+        match value {
+            _ => Err(Ansi16Error::U8TooLarge),
         }
     }
 }
@@ -75,7 +71,7 @@ impl FromStr for Ansi16 {
             }
         }
 
-        Err(InvalidNameError())
+        Err(Ansi16Error::InvalidName)
     }
 }
 
@@ -100,6 +96,9 @@ mod ansi_tests {
     #[test]
     fn test_ansi16_from_str() {
         assert_eq!(Ansi16::from_str("brightblack"), Ok(Ansi16::BrightBlack));
-        assert_eq!(Ansi16::from_str("bright black"), Err(InvalidNameError()));
+        assert_eq!(
+            Ansi16::from_str("bright black"),
+            Err(Ansi16Error::InvalidName)
+        );
     }
 }
