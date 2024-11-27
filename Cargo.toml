@@ -1,0 +1,8 @@
+[package]
+name = "chroma"
+author = "Emma Alexandria"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+strum = { version = "0.26.3", features = ["derive"] }
